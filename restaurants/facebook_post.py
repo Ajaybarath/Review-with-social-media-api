@@ -29,8 +29,10 @@ class Facebook:
     #    This function should publish a post with the given message and photo.
     #    The post should be published to the QEats Facebook Page
     #    You can use the page ID and access tokens provided in self.page_id and self.page_access_token
-    # 2) To find which API to hit, check out developer section of the Facebook API (https://developers.facebook.com/docs/graph-api/reference/page/photos/#publish)
-    # 3) To know how to make an API request in Python have a look at - https://crio-assist.zendesk.com/hc/en-us/articles/360038676513-How-to-make-an-API-request-in-Python
+    # 2) To find which API to hit, check out developer section of the Facebook API:
+    #    https://developers.facebook.com/docs/graph-api/reference/page/photos/#example-2
+    # 3) Learn how to make API requests in Python:
+    #    https://crio-assist.zendesk.com/hc/en-us/articles/360038676513-How-to-make-an-API-request-in-Python
 
 
     # Parameters
@@ -41,8 +43,9 @@ class Facebook:
     #     publicly accessible URL of the image to be posted
     # Return Type: None
     def publish_photo_msg(self, message, image_url):
-        # write your code here
-
+        # 1. read the TODO above
+        # 2. write your code here
+        return
 
 if __name__ == '__main__':
     facebook = Facebook()
