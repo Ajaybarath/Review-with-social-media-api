@@ -9,6 +9,7 @@ from rest_framework import status
 
 import restaurants.image_uploader
 import restaurants.facebook_post
+import restaurants.pinterest_post
 
 # Create your views here.
 def get_access_token(token_name):
@@ -218,7 +219,14 @@ class ShareReview(ListAPIView):
             facebook = restaurants.facebook_post.Facebook()
             facebook.publish_photo_msg(message, image_url)
 
+        #TODO: CRIO_TASK_MODULE_PINTEREST_SHARE
+        # add support to share a review to a Pinterest board
+        # check if you get Pinterest in body['share']
         
+        if 'Pinterest' in body['share']:
+            pinterest = restaurants.pinterest_post.Pinterest()
+            pinterest.publish_photo_msg(message, image_url)
+
 
         response_data = {
             "reviewId": body['orderId'],

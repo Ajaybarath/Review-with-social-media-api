@@ -4,7 +4,6 @@ import json
 import requests
 import datetime
 import filecmp
-import requests
 
 
 class Facebook:
