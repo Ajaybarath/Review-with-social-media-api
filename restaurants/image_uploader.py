@@ -26,7 +26,7 @@ def upload(img_b64):
     response = requests.post(url, data=request_body, headers=headers)
     resp = response.json()
 
-    assert response.status_code == 200
+    assert response.status_code == 200 or response.status_code == 201
     image_url = resp['data']['link']
     return image_url
 
