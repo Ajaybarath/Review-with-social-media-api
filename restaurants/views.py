@@ -206,6 +206,7 @@ class GetTags(APIView):
 class ShareReview(ListAPIView):
     def post(self, request, *args, **kwargs):
         body = request.data
+        
         assert set(['imgBase64', 'orderId', 'share', 'tags', 'text']
                    ) == set(sorted(list(body.keys())))
         message = body['text'] + ' ' + \
