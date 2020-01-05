@@ -4,6 +4,7 @@ import json
 import requests
 import datetime
 import filecmp
+import requests
 
 
 class Facebook:
@@ -45,7 +46,34 @@ class Facebook:
     def publish_photo_msg(self, message, image_url):
         # 1. read the TODO above
         # 2. write your code here
-        return
+
+        params = (
+            ('access_token', self.page_access_token),
+        )
+
+        data = {
+        'url': image_url,
+        'published': 'true',
+        'caption': message,
+        }
+
+
+        # # response = requests.post('https://graph.facebook.com/v5.0/%7B{self.page_id}%7D/photos', params=params, data=data)
+
+        # #NB. Original query string below. It seems impossible to parse and
+        # #reproduce query strings 100% accurately so the one below is given
+        # #in case the reproduced version is not "correct".
+
+        url = 'https://graph.facebook.com/v5.0/' + self.page_id + '/photos'
+        # url = 'https://graph.facebook.com/v5.0/' + self.page_id + '/photos?access_token=' + self.page_access_token
+        response = requests.post(url=url, params=params, data=data)
+
+        # response = requests.post('https://graph.facebook.com/v5.0/{self.page_id}/photos?access_token={self.page_access_token}', data=data)
+        
+        print (response.status_code)
+        print (response.json())
+
+        return 
 
 if __name__ == '__main__':
     facebook = Facebook()
@@ -55,8 +83,8 @@ if __name__ == '__main__':
     # 2) Copy the URL of the image and assign it to the 'image_url' variable
     #    Eg: image_url = 'http://ksmartstatic.sify.com/cmf-1.0.0/appflow/bawarchi.com/Image/oeturjecjjdah_bigger.jpg'
     # 3) Fill the 'my_name' variable with your name so that you know the posts you have created
-    image_url = ''
-    my_name = ''
+    image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLjTG3mc420cPpXYq9e8nPGR24867IoYXo3J975WQXxh6tKHWJ&s'
+    my_name = 'Ajay'
 
     message = my_name + ' likes this ice-cream!'
     facebook.publish_photo_msg(message, image_url)
